@@ -1,0 +1,91 @@
+//(1)
+#include <iostream>
+using namespace std;
+
+class Stack{
+    
+    int top=-1;
+    
+    
+    //Push
+    public:
+        void Push(int array[],int x){
+            top=top+1;
+            int size = sizeof(array) / sizeof(array[0]);
+            if(top>=size){
+                cout<<"Stack Overflow";
+            }else{
+                array[top]=x;
+            }
+        }
+        
+    //Pop
+    public:
+        int Pop(int array[]){
+            
+            int size = sizeof(array) / sizeof(array[0]);
+            if(top<0){
+                cout<<"Stack Underflow";
+            }else{
+                top=top-1;
+            }
+            retrun array[top+1];
+        }
+    
+    //isEmpty
+    public:
+        bool isEmpty(int array[]){
+            if(top==-1){
+                return true;
+            }else{
+                retrun false;
+            }
+        }
+        
+    //isFull
+    public:
+        bool isFull(int array[]){
+            int size = sizeof(array) / sizeof(array[0]);
+            if(top==size-1){
+                return true;
+            }else{
+                retrun false;
+            }
+        }
+        
+    //StackTop
+    public:
+        int StackTop(int array[]){
+            if(isEmpty()){
+                cout<<"stack is empty";
+            }else{
+                return array[top];
+            }
+        }
+        
+    //Display
+    public:
+        void Display(int array[]){
+            if(isEmpty()){
+                cout<<"stack is empty";
+            }else{
+                int size = sizeof(array) / sizeof(array[0]);
+                for(int i=0;i<size;i++){
+                    cout<<array[i]<<" ";
+                }
+            }
+        }
+    
+};
+
+int main() {
+    int array[10];
+    Stack stack;
+    stack.Push(array,5);
+    stack.Pop(array);
+    stack.isEmpty(array);
+    stack.isFull(array);
+    stack.Display(array);
+    return 0;
+}
+
